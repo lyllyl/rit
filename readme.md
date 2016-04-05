@@ -14,7 +14,10 @@ DEMO：http://ruanxingzhi.github.io/
 它的功能主要是生成主页（index.html）。``rit是跨平台的。``
 
 ##安装
-当你看到这份手册的时候，你已经下载了rit的源代码。
+当你看到这份手册的时候，你可能想下载rit的代码。
+```
+git clone git@github.com:Ruanxingzhi/rit.git
+```
 
 你需要使用如下的命令安装：
 

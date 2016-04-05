@@ -1,82 +1,123 @@
-#Rit Project用户手册
+#Rit博客系统用户手册
 
->Version 0.78 Beta2
-COPY[LEFT] 2016
+>Ver 1.0 Release
+>Copy[LEFT] blue 2016
 
-[TOC]
+
+[toc]
 
 ##简介
-rit是一个简易的静态博客系统。它由C语言写成，能生成静态博客。
-DEMO：http://ruanxingzhi.github.io/
+
+---
+rit是一个开源的静态博客系统。此版本rit通过C语言的程序来生成index.html，可以方便地部署到Github Page上。
+
+Demo：http://ruanx.pw (作者的博客)
+
 ![Demo](http://i3.piimg.com/c53d7a00d469bbbe.png)
 
+##文件结构
 
-它的功能主要是生成主页（index.html）。``rit是跨平台的。``
+---
+rit的文件结构如下图所示。
+```
+file/
+    blog.cfg               #Blog全局配置文件
+    post.cfg               #文章配置文件
+    make.h                 #页头、页尾样式
+    rit.c                  #生成html
+    
+    post/
+        Welcome.html       #文章
+```
+
 
 ##安装
-当你看到这份手册的时候，你可能想下载rit的代码。
-```
+安装rit之前需要先进行一些准备……
+
+***
+Step1.下载源代码
+```bash
 git clone git@github.com:Ruanxingzhi/rit.git
 ```
+然后进入rit文件夹。
 
-你需要使用如下的命令安装：
+***
+
+Step2.配置blog.cfg
+
+```C
+#define BLOG_URL "http://ruanxingzhi.coding.me/rit/"
+//修改为你的博客地址
+
+#define BLOG_TITLE "Rit's Demo"
+//修改为你的博客名称
+
+#define BLOG_INTRO "Rit is a Open-Source project!"
+//修改为你的自我介绍
+```
+
+***
+
+Step3.编译rit.c
+
+```bash
+gcc rit.c -o rit
+```
+
+注意：一旦更改了blog.cfg，rit就需要重新编译。
+
+***
+
+Step4.生成index.html
 
 ```bash
 Linux:
-gcc rit.c -o rit
+./rit >index.html
 
 Windows:
-gcc rit.c -o rit.exe
+rit >index.html
 ```
 
-rit就是主文件了。
+index.html就是博客的首页。
+如果你不想生成为index.html，替换掉上面的 "index.html" 即可。
 
-##配置
-打开blog.cfg，修改下面的内容：
+##写作
 
-```
-#define BLOG_URL "你的博客地址"
-#define BLOG_TITLE "博客名称"
-#define BLOG_INTRO "博主简介"
-```
+---
+上面的操作完成之后，你就完成了rit的安装。
 
-##创作
-写一篇博客，用各种方式转成html。
+下一步是写博客了。
 
-推荐的方式是使用stackedit，导出成html。
-Stackedit是在线的Markdown编辑器：https://stackedit.io/editor
+关于博客怎么生成，你可以使用stackedit:
+http://stackedit.io/editor
 
+按左边的 "#" -> Export to disk -> Using template，导出成html文件。
 
-然后把html文件放进post文件夹。修改posts.cfg，按照如下格式修改：
-```
-Total:2									
+当然还可以用python-markdown，remarkable，Retext，Mou……反正不管怎么样，生成出一个html文件就行。
 
+把这个html文件放进post文件夹，然后编辑post.cfg:
 
-Welcome!
-http://ruanxingzhi.github.io/post/wwww.html				#html文件地址
-2016/3/30																			  #创作时间
-这是Markdown测试。													  #文章摘要
+```bash
+Total:1
+#表示总共有多少篇博客需要展示
 
+欢迎使用rit博客系统									
+#文章标题
+http://ruanxingzhi.coding.me/rit/post/readme.html
+#文章URL，把http://ruanxingzhi.coding.me/rit/换成你的博客地址，readme.html换成你的文章名称；也可以链接到别的网页，作一篇转载。
 
-第一次Markdown测试
-http://ruanxingzhi.github.io/post/xxx.html
-2016/3/30
-这是第一次Markdown测试。顶栏字体未生效。
-```
+2016/4/5
+#创作时间
 
-有多少篇博文，total之后就写多少。index将会从上到下展示posts.cfg里的博客。
-
-
-最后，执行命令：
-```
-rit >index.html					#生成首页
+Rit博客系统帮助文档
+#文章内容简介
 ```
 
-##疑难解答、提交bug
-请联系：
-ruanxingzhi@gmail.com
- 
+``去掉上面的注释``，按照实际需要编辑post.cfg。
 
- 
+
+##疑难解答与bug提交
+***
+请联系： ruanxingzhi@gmail.com
 
 

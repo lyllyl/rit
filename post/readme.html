@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rit博客系统用户手册</title>
+<link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body><div class="container"><h1 id="rit博客系统用户手册">Rit博客系统用户手册</h1>
+
+<blockquote>
+  <p>Ver 1.0 Release <br>
+  Copy[LEFT] blue 2016</p>
+</blockquote>
+
+<p><div class="toc">
+<ul>
+<li><a href="#rit博客系统用户手册">Rit博客系统用户手册</a><ul>
+<li><ul>
+<li><a href="#简介">简介</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</p>
+
+
+
+<h2 id="简介">简介</h2>
+
+<hr>
+
+<p>rit是一个开源的静态博客系统。此版本rit通过C语言的程序来生成index.html，可以方便地部署到Github Page上。</p>
+
+<p>Demo：<a href="http://ruanx.pw">http://ruanx.pw</a> (作者的博客)</p>
+
+<p><img src="http://i3.piimg.com/c53d7a00d469bbbe.png" alt="Demo" title=""></p>
+
+
+
+<h2 id="文件结构">文件结构</h2>
+
+<hr>
+
+<p>rit的文件结构如下图所示。</p>
+
+<pre class="prettyprint"><code class=" hljs avrasm">file/
+    blog<span class="hljs-preprocessor">.cfg</span>               <span class="hljs-preprocessor">#Blog全局配置文件</span>
+    post<span class="hljs-preprocessor">.cfg</span>               <span class="hljs-preprocessor">#文章配置文件</span>
+    make<span class="hljs-preprocessor">.h</span>                 <span class="hljs-preprocessor">#页头、页尾样式</span>
+    rit<span class="hljs-preprocessor">.c</span>                  <span class="hljs-preprocessor">#生成html</span>
+
+    post/
+        Welcome<span class="hljs-preprocessor">.html</span>       <span class="hljs-preprocessor">#文章</span></code></pre>
+
+<h2 id="安装">安装</h2>
+
+<p>安装rit之前需要先进行一些准备……</p>
+
+<hr>
+
+<p>Step1.下载源代码</p>
+
+<pre class="prettyprint"><code class="language-bash hljs ">git clone git@github.com:Ruanxingzhi/rit.git</code></pre>
+
+<p>然后进入rit文件夹。</p>
+
+<hr>
+
+<p>Step2.配置blog.cfg</p>
+
+
+
+<pre class="prettyprint"><code class="language-C hljs cs"><span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> BLOG_URL "http://ruanxingzhi.coding.me/rit/"</span>
+<span class="hljs-comment">//修改为你的博客地址</span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> BLOG_TITLE "Rit's Demo"</span>
+<span class="hljs-comment">//修改为你的博客名称</span>
+
+<span class="hljs-preprocessor">#<span class="hljs-keyword">define</span> BLOG_INTRO "Rit is a Open-Source project!"</span>
+<span class="hljs-comment">//修改为你的自我介绍</span></code></pre>
+
+<hr>
+
+<p>Step3.编译rit.c</p>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">gcc rit.c -o rit</code></pre>
+
+<p>注意：一旦更改了blog.cfg，rit就需要重新编译。</p>
+
+<hr>
+
+<p>Step4.生成index.html</p>
+
+
+
+<pre class="prettyprint"><code class="language-bash hljs ">Linux:
+./rit &gt;index.html
+
+Windows:
+rit &gt;index.html</code></pre>
+
+<p>index.html就是博客的首页。 <br>
+如果你不想生成为index.html，替换掉上面的 “index.html” 即可。</p>
+
+<h2 id="写作">写作</h2>
+
+<hr>
+
+<p>上面的操作完成之后，你就完成了rit的安装。</p>
+
+<p>下一步是写博客了。</p>
+
+<p>关于博客怎么生成，你可以使用stackedit: <br>
+<a href="http://stackedit.io/editor">http://stackedit.io/editor</a></p>
+
+<p>按左边的 “#” -&gt; Export to disk -&gt; Using template，导出成html文件。</p>
+
+<p>当然还可以用python-markdown，remarkable，Retext，Mou……反正不管怎么样，生成出一个html文件就行。</p>
+
+<p>把这个html文件放进post文件夹，然后编辑post.cfg:</p>
+
+<pre class="prettyprint"><code class="language-bash hljs ">Total:<span class="hljs-number">1</span>
+<span class="hljs-comment">#表示总共有多少篇博客需要展示</span>
+
+欢迎使用rit博客系统                                 
+<span class="hljs-comment">#文章标题</span>
+http://ruanxingzhi.coding.me/rit/post/readme.html
+<span class="hljs-comment">#文章URL，把http://ruanxingzhi.coding.me/rit/换成你的博客地址，readme.html换成你的文章名称；也可以链接到别的网页，作一篇转载。</span>
+
+<span class="hljs-number">2016</span>/<span class="hljs-number">4</span>/<span class="hljs-number">5</span>
+<span class="hljs-comment">#创作时间</span>
+
+Rit博客系统帮助文档
+<span class="hljs-comment">#文章内容简介</span></code></pre>
+
+<p><code>去掉上面的注释</code>，按照实际需要编辑post.cfg。</p>
+
+
+
+<h2 id="疑难解答与bug提交">疑难解答与bug提交</h2>
+
+<hr>
+
+<p>请联系： ruanxingzhi@gmail.com</p></div></body>
+</html>

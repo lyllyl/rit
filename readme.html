@@ -1,0 +1,169 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   blockquote,body,h1,h2,h3,h4,h5,h6,html,img,li,ol,p,ul{margin:0;padding:0;font:inherit;vertical-align:baseline}html *{font-family:ff-din-web-pro-1,ff-din-web-pro-2,sans-serif;font-size:16px;line-height:19.2px;color-profile:sRGB}body{margin:40px 70px}p{font-weight:lighter;margin-bottom:20px}strong{font-weight:700}ol,ul{margin-left:2em;margin-bottom:20px}ol ol,ol ul,ul ol,ul ul{margin-top:10px}li{margin-bottom:3px}h1,h2,h3,h4,h5,h6{font-weight:lighter;text-transform:capitalize;margin-top:20px;margin-bottom:10px}h1,h2{font-size:24.62px;line-height:29.55px}h3{font-size:23.44px;line-height:28.13px}h4,h5,h6{font-size:22.16px;line-height:26.59px}img{margin-bottom:20px}h1 img,h2 img,h3 img,h4 img,h5 img,h6 img,p img{margin-bottom:0}pre{margin-bottom:20px}code,pre{font-family:monospace}pre{white-space:pre;white-space:pre-wrap;word-wrap:break-word;padding:15px}blockquote{border-left:4px solid;padding:0 15px}blockquote>:first-child{margin-top:0}blockquote>:last-child{margin-bottom:15px}h1{text-transform:uppercase;font-weight:700;border-bottom:1px solid}h2{border-bottom:1px solid}h3,h4,h5,h6{border-bottom:none}html *{color:#657b83}html body{background-color:#fdf6e3}html h1,html h2,html h3,html h4,html h5,html h6{border-color:#657b83}html a:hover{background-color:#eee8d5}html pre{color:#586e75;background-color:#eee8d5}html a,html a:active,html a:visited,html code.url,html h1,html h2,html h3,html h4,html h5,html h6{color:#b58900}@media print{body{margin:0}*{color:#000!important}}table{border-collapse:collapse}td,th{border:1px solid #657b83;padding:.5rem;text-align:left}mark{font-weight:700}
+  </style>
+ </head>
+ <body>
+  <h1 id="rit-project">
+   Rit Project用户手册
+  </h1>
+  <blockquote>
+   <p>
+    Version 0.78 Beta2
+    <br/>
+    COPY[LEFT] 2016
+   </p>
+  </blockquote>
+  <div class="toc">
+   <ul>
+    <li>
+     <a href="#rit-project">
+      Rit Project用户手册
+     </a>
+     <ul>
+      <li>
+       <a href="#_1">
+        简介
+       </a>
+      </li>
+      <li>
+       <a href="#_2">
+        安装
+       </a>
+      </li>
+      <li>
+       <a href="#_3">
+        配置
+       </a>
+      </li>
+      <li>
+       <a href="#_4">
+        创作
+       </a>
+      </li>
+      <li>
+       <a href="#bug">
+        疑难解答、提交bug
+       </a>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </div>
+  <h2 id="_1">
+   简介
+  </h2>
+  <p>
+   rit是一个简易的静态博客系统。它由C语言写成，能生成静态博客。
+   <br/>
+   DEMO：
+   <a href="http://ruanxingzhi.github.io/">
+    http://ruanxingzhi.github.io/
+   </a>
+   <br/>
+   <img alt="Demo" src="http://i3.piimg.com/c53d7a00d469bbbe.png"/>
+  </p>
+  <p>
+   它的功能主要是生成主页（index.html）。
+   <code>
+    rit是跨平台的。
+   </code>
+  </p>
+  <h2 id="_2">
+   安装
+  </h2>
+  <p>
+   当你看到这份手册的时候，你可能想下载rit的代码。
+  </p>
+  <pre><code>git clone git@github.com:Ruanxingzhi/rit.git
+</code></pre>
+  <p>
+   你需要使用如下的命令安装：
+  </p>
+  <pre><code class="bash">Linux:
+gcc rit.c -o rit
+
+Windows:
+gcc rit.c -o rit.exe
+</code></pre>
+  <p>
+   rit就是主文件了。
+  </p>
+  <h2 id="_3">
+   配置
+  </h2>
+  <p>
+   打开blog.cfg，修改下面的内容：
+  </p>
+  <pre><code>#define BLOG_URL "你的博客地址"
+#define BLOG_TITLE "博客名称"
+#define BLOG_INTRO "博主简介"
+</code></pre>
+  <h2 id="_4">
+   创作
+  </h2>
+  <p>
+   写一篇博客，用各种方式转成html。
+  </p>
+  <p>
+   推荐的方式是使用stackedit，导出成html。
+   <br/>
+   Stackedit是在线的Markdown编辑器：
+   <a href="https://stackedit.io/editor">
+    https://stackedit.io/editor
+   </a>
+  </p>
+  <p>
+   然后把html文件放进post文件夹。修改posts.cfg，按照如下格式修改：
+  </p>
+  <pre><code>Total:2                                 
+
+
+Welcome!
+http://ruanxingzhi.github.io/post/wwww.html             #html文件地址
+2016/3/30                                                                             #创作时间
+这是Markdown测试。                                                     #文章摘要
+
+
+第一次Markdown测试
+http://ruanxingzhi.github.io/post/xxx.html
+2016/3/30
+这是第一次Markdown测试。顶栏字体未生效。
+</code></pre>
+  <p>
+   有多少篇博文，total之后就写多少。index将会从上到下展示posts.cfg里的博客。
+  </p>
+  <p>
+   最后，执行命令：
+  </p>
+  <pre><code>rit &gt;index.html                 #生成首页
+</code></pre>
+  <h2 id="bug">
+   疑难解答、提交bug
+  </h2>
+  <p>
+   请联系：
+   <br/>
+   <a href="mailto:ruanxingzhi@gmail.com">
+    ruanxingzhi@gmail.com
+   </a>
+  </p>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
